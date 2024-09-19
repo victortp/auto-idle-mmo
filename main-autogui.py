@@ -5,12 +5,14 @@ import keyboard
 battle_img = '.\\img\\battle.png'
 start_img = '.\\img\\start.png'
 
-start_time = time.time()
+last_refresh = time.time()
 while not keyboard.is_pressed('q'):
     time.sleep(3)
-    if time.time() - start_time >= 600:
+    now = time.time() 
+    if now - last_refresh >= 600:
         print('Recarregando a página')
         pyautogui.hotkey('ctrl', 'f5')
+        last_refresh = now
         time.sleep(10)
 
     try:
